@@ -1,0 +1,67 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "boundaries/entry-point": 0,
+      "boundaries/element-types": [2, {
+        "default": "disallow",
+        "rules": [
+          {
+            "from": "entities",
+            "allow": ["entities"]
+          },
+          {
+            "from": "usecases",
+            "allow": ["entities", "usecases"]
+          },
+          {
+            "from": "adapters",
+            "allow": ["entities", "usecases", "adapters"]
+          },
+          {
+            "from": "main",
+            "allow": ["entities", "usecases", "adapters", "main"]
+          },
+          {
+            "from": "shared",
+            "allow": ["shared"]
+          }
+        ]
+      }]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "boundaries"
+    ],
+    "settings": {
+      "boundaries/ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"],
+      "boundaries/elements": [
+        {
+          "type": "entities", 
+          "pattern": "src/entities"
+        },
+        {
+          "type": "usecases", 
+          "pattern": "src/usecases"
+        },
+        {
+          "type": "adapters", 
+          "pattern": "src/adapters"
+        },
+        {
+          "type": "main", 
+          "pattern": "src/main"
+        },
+        {
+          "type": "shared", 
+          "pattern": "src/shared"
+        }
+      ]
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:boundaries/recommended"
+    ]
+  }
